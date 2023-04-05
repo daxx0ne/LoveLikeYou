@@ -29,4 +29,5 @@ public class InstaMember {
     private String username;
     @Setter
     private String gender;
+
 }
