@@ -13,7 +13,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @Controller
@@ -59,15 +58,8 @@ public class LikeablePersonController {
         return "usr/likeablePerson/list";
     }
 
-    @PostMapping("/delete/{id}")
-    public String delete(@PathVariable("id") Long id) {
-        LikeablePerson likeablePerson = likeablePersonService.findById(id);
-
-        if(!likeablePerson.getFromInstaMember().equals(rq.getMember().getInstaMember())){
-            return rq.historyBack("삭제 권한이 없습니다.");
-        }
-
-        RsData<LikeablePerson> createRsData = likeablePersonService.delete(likeablePerson);
-        return rq.redirectWithMsg("/likeablePerson/list", createRsData);
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        return rq.redirectWithMsg("/likeablePerson/list", "삭제되었습니다.");
     }
 }
