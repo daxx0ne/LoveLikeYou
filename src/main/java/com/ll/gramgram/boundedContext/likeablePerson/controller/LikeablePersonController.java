@@ -59,16 +59,15 @@ public class LikeablePersonController {
         return "usr/likeablePerson/list";
     }
 
-    @PostMapping("/delete")
-    public String delete(@RequestParam Long likeItemId) {
-        InstaMember instaMember = rq.getMember().getInstaMember();
+    @PostMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Long id) {
+        LikeablePerson likeablePerson = likeablePersonService.findById(id);
 
-        if (instaMember == null || !instaMember.isOwnerOfLikeItem(likeItemId)) {
+        if(!likeablePerson.getFromInstaMember().equals(rq.getMember().getInstaMember())){
             return rq.historyBack("삭제 권한이 없습니다.");
         }
 
-        likeablePersonService.deleteLikeItem(instaMember, likeItemId);
-
-        return rq.redirectWithMsg("/likeablePerson/list", "항목이 삭제되었습니다.");
+        RsData<LikeablePerson> createRsData = likeablePersonService.delete(likeablePerson);
+        return rq.redirectWithMsg("/likeablePerson/list", createRsData);
     }
 }

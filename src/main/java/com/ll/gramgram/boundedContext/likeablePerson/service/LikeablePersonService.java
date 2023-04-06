@@ -51,18 +51,15 @@ public class LikeablePersonService {
         return likeablePersonRepository.findByFromInstaMemberId(fromInstaMemberId);
     }
 
+    public LikeablePerson findById(Long id) {
+        return likeablePersonRepository.findById(id).orElse(null);
+    }
+
     @Transactional
-    public RsData<LikeablePerson> delete(Member member, Long fromInstaMemberId) {
-        LikeablePerson likeablePerson = likeablePersonRepository.findById(fromInstaMemberId)
-                .orElseThrow(() -> new IllegalArgumentException("해당 호감정보가 존재하지 않습니다."));
-
-        if (!likeablePerson.getFromInstaMember().equals(member.getInstaMember())) {
-            return RsData.of("F-3", "해당 호감정보의 소유권이 없습니다.");
-        }
-
+    public RsData<LikeablePerson> delete(LikeablePerson likeablePerson) {
         likeablePersonRepository.delete(likeablePerson);
 
-        return RsData.of("S-2", "호감정보가 삭제되었습니다.");
+        return RsData.of("S-1", "호감정보가 삭제되었습니다.");
     }
 
 }
