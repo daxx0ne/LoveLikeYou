@@ -13,7 +13,7 @@
 
             form.username.value = form.username.value.trim(); // 입력란의 입력값에 있을지 모르는 좌우공백제거
 
-            if (form.username.value.length == 0) {
+            if (form.username.value.length === 0) {
                 toastWarning('인스타그램 아이디를 입력해주세요.');
                 form.username.focus();
                 return;
@@ -27,7 +27,7 @@
 
             const $checkedGenderRadioButton = $(form).find("[name=gender]:checked");
 
-            if ($checkedGenderRadioButton.length == 0) {
+            if ($checkedGenderRadioButton.length === 0) {
                 toastWarning('성별을 선택해주세요.');
                 $(form).find("[name=gender]:first").focus();
                 return;
