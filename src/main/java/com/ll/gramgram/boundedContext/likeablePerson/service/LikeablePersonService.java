@@ -39,6 +39,12 @@ public class LikeablePersonService {
             return RsData.of("F-3", "이미 해당 대상에게 호감표시를 하였습니다.");
         }
 
+        // 한 회원이 11명 이상의 호감상대 등록 방지
+        List<LikeablePerson> existingLikesByFromInstaMemberId = likeablePersonRepository.findByFromInstaMemberId(fromInstaMember.getId());
+        if (existingLikesByFromInstaMemberId.size() >= 11) {
+            return RsData.of("F-4", "한 회원은 11명 이상의 호감상대를 등록할 수 없습니다.");
+        }
+
         LikeablePerson likeablePerson = LikeablePerson
                 .builder()
                 .fromInstaMember(fromInstaMember) // 호감을 표시하는 사람의 인스타 멤버
