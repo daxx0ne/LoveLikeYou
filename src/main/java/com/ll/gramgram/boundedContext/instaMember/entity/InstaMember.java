@@ -49,10 +49,10 @@ public class InstaMember {
     private List<LikeablePerson> toLikeablePeople = new ArrayList<>();
 
     public void addFromLikeablePerson(LikeablePerson likeablePerson) {
-        fromLikeablePeople.add(0, likeablePerson);
+        fromLikeablePeople.add(0, likeablePerson); // @OrderBy("id desc") 때문에 앞으로 넣는다.
     }
 
     public void addToLikeablePerson(LikeablePerson likeablePerson) {
-        toLikeablePeople.add(0, likeablePerson);
+        toLikeablePeople.add(0, likeablePerson); // @OrderBy("id desc") 때문에 앞으로 넣는다.
     }
 }
