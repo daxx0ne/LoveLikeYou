@@ -39,6 +39,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
 
         return new CustomOAuth2User(member.getUsername(), member.getPassword(), member.getGrantedAuthorities());
     }
+
 }
 
 class CustomOAuth2User extends User implements OAuth2User {
