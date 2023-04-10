@@ -14,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Objects;
 
 @Controller
 @RequestMapping("/likeablePerson")
@@ -55,21 +54,22 @@ public class LikeablePersonController {
 
         // 인스타인증을 했는지 체크
         if (instaMember != null) {
-            List<LikeablePerson> likeablePeople = likeablePersonService.findByFromInstaMemberId(instaMember.getId());
+            // 해당 인스타회원이 좋아하는 사람들 목록
+            List<LikeablePerson> likeablePeople = instaMember.getFromLikeablePeople();
             model.addAttribute("likeablePeople", likeablePeople);
         }
 
         return "usr/likeablePerson/list";
     }
 
-    @GetMapping("/delete/{id}")
+    @PreAuthorize("isAuthenticated()")
+    @DeleteMapping("/{id}")
     public String delete(@PathVariable Long id) {
         LikeablePerson likeablePerson = likeablePersonService.findById(id).orElse(null);
 
-        if (likeablePerson == null) return rq.historyBack("이미 취소된 호감입니다.");
+        RsData canActorDeleteRsData = likeablePersonService.canActorDelete(rq.getMember(), likeablePerson);
 
-        if (!Objects.equals(rq.getMember().getInstaMember().getId(), likeablePerson.getFromInstaMember().getId()))
-            return rq.historyBack("권한이 없습니다.");
+        if (canActorDeleteRsData.isFail()) return rq.historyBack(canActorDeleteRsData);
 
         RsData deleteRs = likeablePersonService.delete(likeablePerson);
 
