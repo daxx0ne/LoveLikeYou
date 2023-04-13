@@ -39,13 +39,12 @@ public class LikeablePersonService {
             // 기존에 이미 같은 호감을 표시한 경우에만 실패 처리
             if (existingLikes.get(0).getAttractiveTypeCode() == attractiveTypeCode) {
                 return RsData.of("F-3", "이미 해당 대상에게 호감표시를 하였습니다.");
-            } else {
-                // 호감을 표시한 사유가 다른 경우에는 기존 호감표시에서 사유만 수정
-                LikeablePerson existingLike = existingLikes.get(0);
-                existingLike.setAttractiveTypeCode(attractiveTypeCode);
-                likeablePersonRepository.save(existingLike);
-                return RsData.of("S-2", "입력하신 인스타유저(%s)에 대한 호감표시 사유가 수정되었습니다.".formatted(username), existingLike);
             }
+            // 호감을 표시한 사유가 다른 경우에는 기존 호감표시에서 사유만 수정
+            LikeablePerson existingLike = existingLikes.get(0);
+            existingLike.setAttractiveTypeCode(attractiveTypeCode);
+            likeablePersonRepository.save(existingLike);
+            return RsData.of("S-2", "입력하신 인스타유저(%s)에 대한 호감표시 사유가 수정되었습니다.".formatted(username), existingLike);
         }
 
         // 한 회원이 11명 이상의 호감상대 등록 방지
