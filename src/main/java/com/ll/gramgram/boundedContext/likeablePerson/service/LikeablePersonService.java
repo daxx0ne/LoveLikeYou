@@ -50,7 +50,7 @@ public class LikeablePersonService {
 
         // 한 회원이 11명 이상의 호감상대 등록 방지
         List<LikeablePerson> existingLikesByFromInstaMemberId = likeablePersonRepository.findByFromInstaMemberId(fromInstaMember.getId());
-        if (existingLikesByFromInstaMemberId.size() > 11) {
+        if (existingLikesByFromInstaMemberId.size() >= 10) {
             return RsData.of("F-4", "한 회원 당 11명 이상의 호감상대를 등록할 수 없습니다.");
         }
 
