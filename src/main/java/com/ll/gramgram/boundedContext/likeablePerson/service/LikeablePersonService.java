@@ -127,4 +127,32 @@ public class LikeablePersonService {
 
         return RsData.of("S-1", "%s님에 대해서 호감표시가 가능합니다.".formatted(username));
     }
+    @Transactional
+    public RsData modifyAttractive(Member member, String username, int attractiveTypeCode) {
+        // 액터가 생성한 `좋아요` 들 가져오기
+        List<LikeablePerson> fromLikeablePeople = member.getInstaMember().getFromLikeablePeople();
+
+        LikeablePerson fromLikeablePerson = fromLikeablePeople
+                .stream()
+                .filter(e -> e.getToInstaMember().getUsername().equals(username))
+                .findFirst()
+                .orElse(null);
+
+        if (fromLikeablePerson == null) {
+            return RsData.of("F-7", "호감표시를 하지 않았습니다.");
+        }
+
+        String oldAttractiveTypeDisplayName = fromLikeablePerson.getAttractiveTypeDisplayName();
+
+        fromLikeablePerson.setAttractiveTypeCode(attractiveTypeCode);
+        likeablePersonRepository.save(fromLikeablePerson);
+
+        String newAttractiveTypeDisplayName = fromLikeablePerson.getAttractiveTypeDisplayName();
+
+        return RsData.of("S-3", "%s님에 대한 호감사유를 %s에서 %s(으)로 변경합니다.".formatted(username, oldAttractiveTypeDisplayName, newAttractiveTypeDisplayName));
+    }
+
+    public Optional<LikeablePerson> findByFromInstaMember_usernameAndToInstaMember_username(String fromInstaMemberUsername, String toInstaMemberUsername) {
+        return likeablePersonRepository.findByFromInstaMember_usernameAndToInstaMember_username(fromInstaMemberUsername, toInstaMemberUsername);
+    }
 }
