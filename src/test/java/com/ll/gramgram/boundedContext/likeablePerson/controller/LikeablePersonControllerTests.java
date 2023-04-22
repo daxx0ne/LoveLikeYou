@@ -15,6 +15,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.transaction.annotation.Transactional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
@@ -85,8 +86,8 @@ public class LikeablePersonControllerTests {
                         <input type="radio" name="attractiveTypeCode" value="3"
                         """.stripIndent().trim())))
                 .andExpect(content().string(containsString("""
-                        <input type="submit" value="추가"
-                        """.stripIndent().trim())));
+                        id="btn-like-1"
+                         """.stripIndent().trim())));
         ;
     }
 
@@ -160,6 +161,7 @@ public class LikeablePersonControllerTests {
                         """.stripIndent().trim())));
         ;
     }
+
     @Test
     @DisplayName("호감취소")
     @WithUserDetails("user3")
@@ -182,6 +184,7 @@ public class LikeablePersonControllerTests {
 
         assertThat(likeablePersonService.findById(1L).isPresent()).isEqualTo(false);
     }
+
     @Test
     @DisplayName("호감취소(없는거 취소, 취소가 안되어야 함)")
     @WithUserDetails("user3")
