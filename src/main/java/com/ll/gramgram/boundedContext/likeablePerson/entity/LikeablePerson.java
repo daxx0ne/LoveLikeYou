@@ -38,9 +38,11 @@ public class LikeablePerson extends BaseEntity {
             default -> "능력";
         };
     }
-
-
-    public void setAttractiveTypeCode(int attractiveTypeCode) {
-        this.attractiveTypeCode = attractiveTypeCode;
+    public String getAttractiveTypeDisplayNameWithIcon() {
+        return switch (attractiveTypeCode) {
+            case 1 -> "<i class=\"fa-solid fa-person-rays\"></i>";
+            case 2 -> "<i class=\"fa-regular fa-face-smile\"></i>";
+            default -> "<i class=\"fa-solid fa-people-roof\"></i>";
+        } + "&nbsp;" + getAttractiveTypeDisplayName();
     }
 }
