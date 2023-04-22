@@ -61,11 +61,11 @@ public class LikeablePersonController {
     @DeleteMapping("/{id}")
     public String cancel(@PathVariable Long id) {
         LikeablePerson likeablePerson = likeablePersonService.findById(id).orElse(null);
-        RsData canActorDeleteRsData = likeablePersonService.canDelete(rq.getMember(), likeablePerson);
+        RsData canActorDeleteRsData = likeablePersonService.canCancel(rq.getMember(), likeablePerson);
 
         if (canActorDeleteRsData.isFail()) return rq.historyBack(canActorDeleteRsData);
 
-        RsData deleteRsData = likeablePersonService.delete(likeablePerson);
+        RsData deleteRsData = likeablePersonService.cancel(likeablePerson);
 
         if (deleteRsData.isFail()) return rq.historyBack(deleteRsData);
 
