@@ -37,16 +37,6 @@ public class NotProd {
 
             likeablePersonService.like(memberUser3, "insta_user4", 1);
             likeablePersonService.like(memberUser3, "insta_user100", 2);
-            likeablePersonService.like(memberUser5, "insta_user101", 2);
-            likeablePersonService.like(memberUser5, "insta_user102", 2);
-            likeablePersonService.like(memberUser5, "insta_user103", 2);
-            likeablePersonService.like(memberUser5, "insta_user104", 2);
-            likeablePersonService.like(memberUser5, "insta_user105", 2);
-            likeablePersonService.like(memberUser5, "insta_user106", 2);
-            likeablePersonService.like(memberUser5, "insta_user107", 2);
-            likeablePersonService.like(memberUser5, "insta_user108", 2);
-            likeablePersonService.like(memberUser5, "insta_user109", 2);
-            likeablePersonService.like(memberUser5, "insta_user110", 2);
         };
     }
 }
