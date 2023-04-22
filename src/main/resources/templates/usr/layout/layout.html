@@ -33,7 +33,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 
 <!-- min-h-screen : min-height:100vh; -->
-<main class="min-h-screen flex flex-col">
+<div class="min-h-screen flex flex-col">
     <header class="sticky top-0">
         <div class="navbar max-w-2xl mx-auto bg-base-100">
             <div class="navbar-start">
@@ -87,8 +87,9 @@
     </header>
 
     <main layout:fragment="main"></main>
+</div>
 
-    <script th:inline="javascript">
+<script th:inline="javascript">
         // 타임리프 문법(파라미터, ? 뒤에 입력된 매개변수들)
         const params = /*[[ ${param} ]]*/ null;
 
@@ -117,8 +118,7 @@
                 }
             }
         });
-    </script>
-</main>
+</script>
 
 </body>
 </html>
