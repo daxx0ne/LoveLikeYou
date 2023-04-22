@@ -197,4 +197,12 @@ public class LikeablePersonServiceTests {
         assertThat(likeablePerson.getId()).isEqualTo(2);
     }
 
+    @Test
+    @DisplayName("테스트 5")
+    void t005() throws Exception {
+        LikeablePerson likeablePerson = likeablePersonRepository.findQslByFromInstaMemberIdAndToInstaMember_username(2L, "insta_user4").orElse(null);
+
+        assertThat(likeablePerson.getId()).isEqualTo(1L);
+    }
+
 }
