@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping("/instaMember")
+@RequestMapping("/usr/instaMember")
 @RequiredArgsConstructor
 public class InstaMemberController {
     private final Rq rq;
@@ -50,6 +50,6 @@ public class InstaMemberController {
             return rq.historyBack(rsData);
         }
 
-        return rq.redirectWithMsg("/likeablePerson/like", "인스타그램 계정이 연결되었습니다.");
+        return rq.redirectWithMsg("/usr/likeablePerson/like", "인스타그램 계정이 연결되었습니다.");
     }
 }

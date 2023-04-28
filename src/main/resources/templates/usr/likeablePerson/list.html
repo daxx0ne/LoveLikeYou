@@ -53,7 +53,7 @@
                                     &nbsp;
                                     호감취소
                                 </a>
-                                <form hidden th:action="@{|/likeablePerson/${likeablePerson.id}|}" method="POST">
+                                <form hidden th:action="@{|/usr/likeablePerson/${likeablePerson.id}|}" method="POST">
                                     <input type="hidden" name="_method" value="delete">
                                 </form>
                             </div>
@@ -65,7 +65,7 @@
 
         <div class="text-center mt-4">
             <a th:if="${@rq.member.hasConnectedInstaMember}" href="like" class="btn btn-link">호감표시</a>
-            <a th:if="${@rq.member.hasConnectedInstaMember}" href="/member/me" class="btn btn-link">내 정보</a>
+            <a th:if="${@rq.member.hasConnectedInstaMember}" href="/usr/member/me" class="btn btn-link">내 정보</a>
         </div>
     </div>
 </main>

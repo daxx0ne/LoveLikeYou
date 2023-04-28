@@ -41,7 +41,7 @@ public class MemberControllerTests {
     void t001() throws Exception {
         // WHEN
         ResultActions resultActions = mvc
-                .perform(get("/member/join"))
+                .perform(get("/usr/member/join"))
                 .andDo(print()); // 크게 의미 없고, 그냥 확인용
 
         // THEN
@@ -66,7 +66,7 @@ public class MemberControllerTests {
     void t002() throws Exception {
         // WHEN
         ResultActions resultActions = mvc
-                .perform(post("/member/join")
+                .perform(post("/usr/member/join")
                         .with(csrf()) // CSRF 키 생성
                         .param("username", "user10")
                         .param("password", "1234")
@@ -78,7 +78,7 @@ public class MemberControllerTests {
                 .andExpect(handler().handlerType(MemberController.class))
                 .andExpect(handler().methodName("join"))
                 .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrlPattern("/member/login?msg=**"));
+                .andExpect(redirectedUrlPattern("/usr/member/login?msg=**"));
 
         Member member = memberService.findByUsername("user10").orElse(null);
 
@@ -90,7 +90,7 @@ public class MemberControllerTests {
     void t003() throws Exception {
         // WHEN
         ResultActions resultActions = mvc
-                .perform(post("/member/join")
+                .perform(post("/usr/member/join")
                         .with(csrf()) // CSRF 키 생성
                         .param("username", "user10")
                 )
@@ -104,7 +104,7 @@ public class MemberControllerTests {
 
         // WHEN
         resultActions = mvc
-                .perform(post("/member/join")
+                .perform(post("/usr/member/join")
                         .with(csrf()) // CSRF 키 생성
                         .param("password", "1234")
                 )
@@ -118,7 +118,7 @@ public class MemberControllerTests {
 
         // WHEN
         resultActions = mvc
-                .perform(post("/member/join")
+                .perform(post("/usr/member/join")
                         .with(csrf()) // CSRF 키 생성
                         .param("username", "user10" + "a".repeat(30))
                         .param("password", "1234")
@@ -133,7 +133,7 @@ public class MemberControllerTests {
 
         // WHEN
         resultActions = mvc
-                .perform(post("/member/join")
+                .perform(post("/usr/member/join")
                         .with(csrf()) // CSRF 키 생성
                         .param("username", "user10")
                         .param("password", "1234" + "a".repeat(30))
@@ -152,7 +152,7 @@ public class MemberControllerTests {
     void t004() throws Exception {
         // WHEN
         ResultActions resultActions = mvc
-                .perform(get("/member/login"))
+                .perform(get("/usr/member/login"))
                 .andDo(print());
 
         // THEN
@@ -177,7 +177,7 @@ public class MemberControllerTests {
     void t005() throws Exception {
         // WHEN
         ResultActions resultActions = mvc
-                .perform(post("/member/login")
+                .perform(post("/usr/member/login")
                         .with(csrf()) // CSRF 키 생성
                         .param("username", "user1")
                         .param("password", "1234")
@@ -206,7 +206,7 @@ public class MemberControllerTests {
     void t006() throws Exception {
         // WHEN
         ResultActions resultActions = mvc
-                .perform(get("/member/me"))
+                .perform(get("/usr/member/me"))
                 .andDo(print());
 
         // THEN

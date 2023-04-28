@@ -20,7 +20,7 @@ public class HomeController {
         return "usr/home/main";
     }
 
-    @GetMapping("/debugSession")
+    @GetMapping("/usr/debugSession")
     @ResponseBody
     @PreAuthorize("hasAuthority('admin')")
     public String showDebugSession(HttpSession session) {
@@ -36,7 +36,7 @@ public class HomeController {
         return sb.toString().replaceAll("\n", "<br>");
     }
 
-    @GetMapping("/historyBackTest")
+    @GetMapping("/usr/historyBackTest")
     @PreAuthorize("hasAuthority('admin')")
     public String showHistoryBackTest(HttpSession session) {
         return rq.historyBack("여기는 당신같은 사람이 오면 안돼요.");
