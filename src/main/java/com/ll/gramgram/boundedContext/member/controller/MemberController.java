@@ -69,45 +69,6 @@ public class MemberController {
             return rq.historyBack("먼저 본인의 인스타그램 아이디를 입력해주세요.");
         }
 
-        InstaMember instaMember = rq.getMember().getInstaMember();
-
-        long likesByGenderWomen = instaMember
-                .getToLikeablePeople()
-                .stream()
-                .filter(likeablePerson -> likeablePerson.getToInstaMember().getGender().equals("W"))
-                .count();
-
-        long likesByGenderMen = instaMember
-                .getToLikeablePeople()
-                .stream()
-                .filter(likeablePerson -> likeablePerson.getToInstaMember().getGender().equals("M"))
-                .count();
-
-        long likesByAttractiveTypeCode1 = instaMember
-                .getToLikeablePeople()
-                .stream()
-                .filter(likeablePerson -> likeablePerson.getAttractiveTypeCode() == 1)
-                .count();
-
-        long likesByAttractiveTypeCode2 = instaMember
-                .getToLikeablePeople()
-                .stream()
-                .filter(likeablePerson -> likeablePerson.getAttractiveTypeCode() == 2)
-                .count();
-
-        long likesByAttractiveTypeCode3 = instaMember
-                .getToLikeablePeople()
-                .stream()
-                .filter(likeablePerson -> likeablePerson.getAttractiveTypeCode() == 3)
-                .count();
-
-        model.addAttribute("likes", likesByGenderWomen + likesByGenderMen);
-        model.addAttribute("likesByGenderWomen", likesByGenderWomen);
-        model.addAttribute("likesByGenderMen", likesByGenderMen);
-        model.addAttribute("likesByAttractiveTypeCode1", likesByAttractiveTypeCode1);
-        model.addAttribute("likesByAttractiveTypeCode2", likesByAttractiveTypeCode2);
-        model.addAttribute("likesByAttractiveTypeCode3", likesByAttractiveTypeCode3);
-
         return "usr/member/me";
     }
 }
