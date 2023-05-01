@@ -2,7 +2,9 @@
 
 - [ ] 호감에 대한 수정/삭제 쿨타임
   - [x] 설정정보 가져오기
-  - [ ] 호감표시/호감사유변경 시에 modifyUnlockDate 갱신(현재날짜 + 쿨타임)
+  - [x] 호감표시/호감사유변경 시에 modifyUnlockDate 갱신(현재날짜 + 쿨타임)
+  - [ ] UI에서 쿨타임 안차면 수정/삭제 못 하도록
+  - [ ] LikeablePersonService::canDelete, LikeablePersonService::canLike 에 쿨타임 체크 추가
 - [x] 회원가입 폼
     - [x] 로그인 상태에서 들어올 수 없다.
     - [x] 폼이 있어야 한다.
