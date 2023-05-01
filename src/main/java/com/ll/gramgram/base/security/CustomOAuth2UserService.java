@@ -48,6 +48,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
             RestTemplate restTemplate = new RestTemplate();
             HttpEntity<String> entity = new HttpEntity<>(new HttpHeaders());
             ResponseEntity<Map> response = restTemplate.exchange(userInfoUri, HttpMethod.GET, entity, Map.class);
+
             Map<String, String> userAttributes = response.getBody();
 
             String gender = rq.getSessionAttr("connectByApi__gender", "W");

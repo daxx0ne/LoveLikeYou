@@ -13,11 +13,9 @@ import lombok.experimental.SuperBuilder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
-import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Getter
@@ -53,6 +51,7 @@ public class Member extends BaseEntity {
     }
 
     // 이 회원이 본인의 인스타ID를 등록했는지 안했는지
+
     public boolean hasConnectedInstaMember() {
         return instaMember != null;
     }

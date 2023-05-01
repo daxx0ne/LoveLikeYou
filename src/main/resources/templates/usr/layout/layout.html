@@ -1,6 +1,7 @@
 <html layout:decorate="~{common/layout.html}">
 
 <body>
+
 <header layout:fragment="header" class="sticky top-0 z-50">
     <div class="navbar max-w-2xl mx-auto bg-base-100">
         <div class="navbar-start">
@@ -17,7 +18,6 @@
                     </li>
                     <li th:if="${@rq.login}"><a href="/usr/member/pop"><i class="fa-solid fa-chart-line"></i> 내 인기</a>
                     </li>
-
                     <li th:if="${@rq.login}">
                         <a href="/usr/likeablePerson/toList">
                             <i class="fa-solid fa-list-ul"></i> 내가 받은 호감

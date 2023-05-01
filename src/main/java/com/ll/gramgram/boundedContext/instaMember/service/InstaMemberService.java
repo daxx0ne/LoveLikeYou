@@ -7,7 +7,6 @@ import com.ll.gramgram.boundedContext.instaMember.repository.InstaMemberReposito
 import com.ll.gramgram.boundedContext.instaMember.repository.InstaMemberSnapshotRepository;
 import com.ll.gramgram.boundedContext.likeablePerson.entity.LikeablePerson;
 import com.ll.gramgram.boundedContext.member.entity.Member;
-
 import com.ll.gramgram.boundedContext.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

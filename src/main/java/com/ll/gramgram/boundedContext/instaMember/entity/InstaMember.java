@@ -10,7 +10,6 @@ import org.hibernate.annotations.LazyCollectionOption;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Entity
 @Getter
 @NoArgsConstructor
@@ -70,7 +69,6 @@ public class InstaMember extends InstaMemberBase {
         } + "&nbsp;" + getGenderDisplayName();
     }
 
-
     public void increaseLikesCount(String gender, int attractiveTypeCode) {
         if (gender.equals("W") && attractiveTypeCode == 1) likesCountByGenderWomanAndAttractiveTypeCode1++;
         if (gender.equals("W") && attractiveTypeCode == 2) likesCountByGenderWomanAndAttractiveTypeCode2++;
@@ -78,7 +76,6 @@ public class InstaMember extends InstaMemberBase {
         if (gender.equals("M") && attractiveTypeCode == 1) likesCountByGenderManAndAttractiveTypeCode1++;
         if (gender.equals("M") && attractiveTypeCode == 2) likesCountByGenderManAndAttractiveTypeCode2++;
         if (gender.equals("M") && attractiveTypeCode == 3) likesCountByGenderManAndAttractiveTypeCode3++;
-
     }
 
     public void decreaseLikesCount(String gender, int attractiveTypeCode) {
@@ -88,8 +85,8 @@ public class InstaMember extends InstaMemberBase {
         if (gender.equals("M") && attractiveTypeCode == 1) likesCountByGenderManAndAttractiveTypeCode1--;
         if (gender.equals("M") && attractiveTypeCode == 2) likesCountByGenderManAndAttractiveTypeCode2--;
         if (gender.equals("M") && attractiveTypeCode == 3) likesCountByGenderManAndAttractiveTypeCode3--;
-
     }
+
     public void updateGender(String gender) {
         this.gender = gender;
     }
