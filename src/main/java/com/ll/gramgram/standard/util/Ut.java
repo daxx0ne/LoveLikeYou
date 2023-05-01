@@ -1,6 +1,5 @@
 package com.ll.gramgram.standard.util;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -31,11 +30,7 @@ public class Ut {
 
     public static class url {
         public static String encode(String str) {
-            try {
-                return URLEncoder.encode(str, "UTF-8");
-            } catch (UnsupportedEncodingException e) {
-                return str;
-            }
+            return URLEncoder.encode(str, StandardCharsets.UTF_8);
         }
 
         public static String modifyQueryParam(String url, String paramName, String paramValue) {
@@ -46,11 +41,11 @@ public class Ut {
         }
 
         public static String addQueryParam(String url, String paramName, String paramValue) {
-            if (url.contains("?") == false) {
+            if (!url.contains("?")) {
                 url += "?";
             }
 
-            if (url.endsWith("?") == false && url.endsWith("&") == false) {
+            if (!url.endsWith("?") && !url.endsWith("&")) {
                 url += "&";
             }
 

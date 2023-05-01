@@ -4,6 +4,8 @@ import com.ll.gramgram.base.appConfig.AppConfig;
 import com.ll.gramgram.boundedContext.instaMember.entity.InstaMember;
 import com.ll.gramgram.boundedContext.likeablePerson.entity.LikeablePerson;
 import com.ll.gramgram.boundedContext.likeablePerson.repository.LikeablePersonRepository;
+import com.ll.gramgram.boundedContext.member.entity.Member;
+import com.ll.gramgram.boundedContext.member.service.MemberService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
@@ -14,6 +16,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,6 +25,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ActiveProfiles("test")
 @TestMethodOrder(MethodOrderer.MethodName.class)
 public class LikeablePersonServiceTests {
+    @Autowired
+    private MemberService memberService;
     @Autowired
     private LikeablePersonService likeablePersonService;
     @Autowired
@@ -131,7 +136,7 @@ public class LikeablePersonServiceTests {
 
         if (oldLikeablePerson != null) {
             System.out.println("v4 : 이미 나(인스타아이디 : insta_user3)는 insta_user4에게 호감을 표시 했구나.");
-            System.out.println("v4 : 기존 호감사유 : %s".formatted(oldLikeablePerson.getAttractiveTypeDisplayName()));
+            System.out.printf("v4 : 기존 호감사유 : %s%n", oldLikeablePerson.getAttractiveTypeDisplayName());
         }
     }
     @Test
@@ -213,5 +218,18 @@ public class LikeablePersonServiceTests {
     void t006() throws Exception {
         System.out.println("likeablePersonModifyCoolTime : " + AppConfig.getLikeablePersonModifyCoolTime());
         assertThat(AppConfig.getLikeablePersonModifyCoolTime()).isGreaterThan(0);
+    }
+
+    @Test
+    @DisplayName("호감표시를 하면 쿨타임이 지정된다.")
+    void t007() throws Exception {
+        LocalDateTime coolTime = AppConfig.genLikeablePersonModifyUnlockDate();
+
+        Member memberUser3 = memberService.findByUsername("user3").orElseThrow();
+        LikeablePerson likeablePersonToBts = likeablePersonService.like(memberUser3, "bts", 3).getData();
+
+        assertThat(
+                likeablePersonToBts.getModifyUnlockDate().isAfter(coolTime)
+        ).isTrue();
     }
 }
