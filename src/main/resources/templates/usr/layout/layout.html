@@ -48,7 +48,7 @@
                     <ul tabindex="0"
                         class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li th:if="${@rq.logout}"><a href="/usr/member/login"><i
-                                class="fa-solid fa-arrow-right-to-bracket"></i> 로그인</a>
+                                class="fa-solid fa-arrow-right-to-bracket"></i> 시작하기</a>
                         </li>
                         <li th:if="${@rq.login}">
                             <a href="javascript:;" onclick="$(this).next().submit();">
@@ -67,6 +67,8 @@
                                 <i class="fa-brands fa-instagram"></i>
                                 인스타 아이디 입력
                             </a>
+                        </li>
+                        <li><a href="/usr/home/about"><i class="fa-solid fa-heart"></i> 그램그램이란?</a>
                         </li>
                     </ul>
                 </div>

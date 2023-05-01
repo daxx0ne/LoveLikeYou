@@ -48,7 +48,7 @@
     <div class="max-w-2xl w-full px-4">
         <h1 class="mb-4">
             <i class="fa-solid fa-arrow-right-to-bracket"></i>
-            로그인
+            시작하기
         </h1>
 
         <form th:action method="POST" class="flex flex-col gap-6" onsubmit="LoginForm__submit(this); return false;">
@@ -75,19 +75,22 @@
 
             <a href="/oauth2/authorization/kakao" class="btn btn-block btn-outline gap-1">
                 <i class="fa-solid fa-comment text-[color:#ffe812]"></i>
-                <span>카카오 로그인</span>
+                <span>카카오 아이디로 시작하기</span>
             </a>
 
             <a href="/oauth2/authorization/naver" class="btn btn-block btn-outline gap-1">
                 <i class="fa-solid fa-n text-[color:#2DB400]"></i>
-                <span>네이버 로그인</span>
+                <span>네이버 아이디로 시작하기</span>
             </a>
 
             <a href="/oauth2/authorization/google" class="btn btn-block btn-outline gap-1">
                 <i class="fa-brands fa-google text-[color:#ff4000]"></i>
-                <span>구글 로그인</span>
+                <span>구글 아이디로 시작하기</span>
             </a>
 
+            <div class="flex flex-wrap justify-center">
+                <a href="/usr/home/about" class="btn btn-link">그램그램이란?</a>
+            </div>
         </form>
     </div>
 </main>
