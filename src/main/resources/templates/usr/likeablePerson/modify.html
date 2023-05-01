@@ -12,7 +12,7 @@
         const inputValue__attractiveTypeCode = /*[[ ${likeablePerson.attractiveTypeCode} ]]*/ null;
 
         function ModifyLikeForm__submit(form) {
-            if ( inputValue__attractiveTypeCode == form.attractiveTypeCode.value ) {
+            if (inputValue__attractiveTypeCode == form.attractiveTypeCode.value) {
                 toastWarning('기존 호감사유와 다른 호감사유로 변경해주세요.');
                 return;
             }
@@ -88,7 +88,9 @@
 
                     <script th:inline="javascript">
                         // 타임리프 문법(파라미터, ? 뒤에 입력된 매개변수들)
-                        $(`input[name=attractiveTypeCode][value=${inputValue__attractiveTypeCode}]:last`).prop('checked', true);
+                        $(`input[name=attractiveTypeCode][value=${inputValue__attractiveTypeCode}]:last`)
+                            .prop('checked', true)
+                            .prop('disabled', true);
                     </script>
                 </div>
 
