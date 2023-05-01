@@ -66,12 +66,15 @@
                             </div>
 
                             <div class="card-actions justify-center">
-                                <a th:href="@{|modify/${likeablePerson.id}|}" class="btn btn-sm btn-outline">
+                                <a th:href="@{|modify/${likeablePerson.id}|}" class="btn btn-sm btn-outline"
+                                   th:classappend="${!likeablePerson.modifyUnlocked ? 'btn-disabled' : ''}">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                     &nbsp;
                                     호감사유 변경
                                 </a>
-                                <a class="btn btn-sm btn-outline" href="javascript:"
+                                <a class="btn btn-sm btn-outline"
+                                   th:classappend="${!likeablePerson.modifyUnlocked ? 'btn-disabled' : ''}"
+                                   href="javascript:"
                                    onclick="if ( confirm('정말로 취소하시겠습니까?') ) $(this).next().submit();">
                                     <i class="fa-solid fa-user-slash"></i>
                                     &nbsp;
@@ -80,6 +83,12 @@
                                 <form hidden th:action="@{|/usr/likeablePerson/${likeablePerson.id}|}" method="POST">
                                     <input type="hidden" name="_method" value="delete">
                                 </form>
+                            </div>
+                            <div th:unless="${likeablePerson.modifyUnlocked}" class="text-center text-gray-500 text-sm mt-2">
+                                <span class="text-red-400">호감사유 변경</span>과 <span
+                                    class="text-red-400">호감취소</span>는 <span
+                                    class="badge badge-primary"
+                                    th:text="${likeablePerson.modifyUnlockDateRemainStrHuman}"></span>에 가능합니다.
                             </div>
                         </div>
                     </div>

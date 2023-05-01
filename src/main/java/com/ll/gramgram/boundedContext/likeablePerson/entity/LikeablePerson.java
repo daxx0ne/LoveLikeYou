@@ -34,6 +34,15 @@ public class LikeablePerson extends BaseEntity {
 
     private int attractiveTypeCode; // 매력포인트(1=외모, 2=성격, 3=능력)
 
+    public boolean isModifyUnlocked() {
+        return modifyUnlockDate.isBefore(LocalDateTime.now());
+    }
+
+    // 초 단위에서 올림 해주세요.
+    public String getModifyUnlockDateRemainStrHuman() {
+        return "2시간 16분";
+    }
+
     public RsData updateAttractionTypeCode(int attractiveTypeCode) {
         if (this.attractiveTypeCode == attractiveTypeCode) {
             return RsData.of("F-1", "이미 설정되었습니다.");
