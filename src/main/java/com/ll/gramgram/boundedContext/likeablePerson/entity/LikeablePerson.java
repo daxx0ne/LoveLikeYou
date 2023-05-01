@@ -6,7 +6,6 @@ import com.ll.gramgram.base.baseEntity.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
