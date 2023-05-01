@@ -53,6 +53,8 @@ public class InstaMemberService {
 
         instaMemberRepository.save(instaMember);
 
+        instaMember.saveSnapshot();
+
         return RsData.of("S-1", "인스타계정이 등록되었습니다.", instaMember);
     }
 
@@ -73,7 +75,7 @@ public class InstaMemberService {
         // 찾았다면
         if (opInstaMember.isPresent()) {
             InstaMember instaMember = opInstaMember.get();
-            instaMember.setGender(gender); // 성별세팅
+            instaMember.updateGender(gender); // 성별세팅
             instaMemberRepository.save(instaMember); // 저장
 
             // 기존 인스타회원이랑 연결
