@@ -38,4 +38,21 @@ public class NotificationService {
 
         return RsData.of("S-1", "알림 메세지가 생성되었습니다.", notification);
     }
+
+    public RsData<Notification> makeModifyAttractive(LikeablePerson likeablePerson, int oldAttractiveTypeCode) {
+        Notification notification = Notification
+                .builder()
+                .typeCode("ModifyAttractiveType")
+                .toInstaMember(likeablePerson.getToInstaMember())
+                .fromInstaMember(likeablePerson.getFromInstaMember())
+                .oldAttractiveTypeCode(oldAttractiveTypeCode)
+                .oldGender(likeablePerson.getFromInstaMember().getGender())
+                .newAttractiveTypeCode(likeablePerson.getAttractiveTypeCode())
+                .newGender(likeablePerson.getFromInstaMember().getGender())
+                .build();
+
+        notificationRepository.save(notification);
+
+        return RsData.of("S-1", "알림 메세지가 생성되었습니다.", notification);
+    }
 }

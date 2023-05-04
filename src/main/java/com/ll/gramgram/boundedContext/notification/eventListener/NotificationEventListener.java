@@ -26,6 +26,8 @@ public class NotificationEventListener {
 
     @EventListener
     public void listen(EventAfterModifyAttractiveType event) {
+        LikeablePerson likeablePerson = event.getLikeablePerson();
 
+        notificationService.makeModifyAttractive(likeablePerson, event.getOldAttractiveTypeCode());
     }
 }
