@@ -23,30 +23,22 @@ public class NotificationService {
 
     @Transactional
     public RsData<Notification> makeLike(LikeablePerson likeablePerson) {
-        Notification notification = Notification
-                .builder()
-                .typeCode("LIKE")
-                .toInstaMember(likeablePerson.getToInstaMember())
-                .fromInstaMember(likeablePerson.getFromInstaMember())
-                .oldAttractiveTypeCode(0)
-                .oldGender(null)
-                .newAttractiveTypeCode(likeablePerson.getAttractiveTypeCode())
-                .newGender(likeablePerson.getFromInstaMember().getGender())
-                .build();
-
-        notificationRepository.save(notification);
-
-        return RsData.of("S-1", "알림 메세지가 생성되었습니다.", notification);
+        return make(likeablePerson, "LIKE", 0, null);
     }
 
+    @Transactional
     public RsData<Notification> makeModifyAttractive(LikeablePerson likeablePerson, int oldAttractiveTypeCode) {
+        return make(likeablePerson, "ModifyAttractiveType", oldAttractiveTypeCode, likeablePerson.getFromInstaMember().getGender());
+    }
+
+    private RsData<Notification> make(LikeablePerson likeablePerson, String typeCode, int oldAttractiveTypeCode, String oldGender) {
         Notification notification = Notification
                 .builder()
-                .typeCode("ModifyAttractiveType")
+                .typeCode(typeCode)
                 .toInstaMember(likeablePerson.getToInstaMember())
                 .fromInstaMember(likeablePerson.getFromInstaMember())
                 .oldAttractiveTypeCode(oldAttractiveTypeCode)
-                .oldGender(likeablePerson.getFromInstaMember().getGender())
+                .oldGender(oldGender)
                 .newAttractiveTypeCode(likeablePerson.getAttractiveTypeCode())
                 .newGender(likeablePerson.getFromInstaMember().getGender())
                 .build();
