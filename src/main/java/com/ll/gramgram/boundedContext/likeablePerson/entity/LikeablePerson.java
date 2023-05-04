@@ -40,17 +40,7 @@ public class LikeablePerson extends BaseEntity {
 
     // 필수미션1 - 호감표시/호감사유변경 후, 개별 호감표시건에 대해서, 3시간 동안은 호감취소와 호감사유변경을 할 수 없도록 작업
     public String getModifyUnlockDateRemainStrHuman() {
-        long secondsLeft = java.time.Duration.between(LocalDateTime.now(), modifyUnlockDate).getSeconds();
-        long hoursLeft = secondsLeft / 3600;
-        long minutesLeft = (secondsLeft % 3600) / 60;
-
-        if (secondsLeft < 0) {
-            return "0분";
-        } else if (hoursLeft > 0) {
-            return hoursLeft + "시간 " + minutesLeft + "분";
-        } else {
-            return minutesLeft + "분";
-        }
+        return Ut.time.diffFormat1Human(LocalDateTime.now(), modifyUnlockDate);
     }
 
     public RsData updateAttractionTypeCode(int attractiveTypeCode) {
