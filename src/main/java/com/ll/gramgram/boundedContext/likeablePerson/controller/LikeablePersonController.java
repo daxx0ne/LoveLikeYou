@@ -90,7 +90,7 @@ public class LikeablePersonController {
     public String showModify(@PathVariable Long id, Model model) {
         LikeablePerson likeablePerson = likeablePersonService.findById(id).orElseThrow();
 
-        RsData canModifyRsData = likeablePersonService.canModifyLike(rq.getMember(), likeablePerson);
+        RsData canModifyRsData = likeablePersonService.canModify(rq.getMember(), likeablePerson);
 
         if (canModifyRsData.isFail()) return rq.historyBack(canModifyRsData);
 
