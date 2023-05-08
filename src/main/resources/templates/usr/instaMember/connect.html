@@ -56,10 +56,10 @@
                    className="block mb-3 text-sm break-all underline text-blue-400">
                     <span>https://instagram.com/</span><span className="text-red-300"></span>
                 </a>
-                <input type="text" name="username" placeholder="인스타 아이디" class="input input-bordered" autofocus
-                       onchange="$(this).keyup();"
-                       onkeyup="$(this).prev().children(':last-child').text(this.value.trim());"
-                       onpaste="setTimeoutZero(() => $(this).keyup());"/>
+                <input type="text" name="username" placeholder="인스타 아이디" className="input input-bordered" autoFocus
+                       onChange="$(this).keyup();"
+                       onKeyUp="$(this).prev().children(':last-child').text(this.value.trim());"
+                       onPaste="setTimeoutZero(() => $(this).keyup());"/>
                 <script>
                     // input : 태그가 input 인 녀석 선택
                     // input[name="username"] 태그가 input 이고 name 속성의 값이 username 인 녀석을 선택
@@ -108,4 +108,3 @@
 </body>
 
 </html>
-

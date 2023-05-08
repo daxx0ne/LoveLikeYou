@@ -6,13 +6,13 @@
 
 <body>
 
-<main layout:fragment="main" className="flex-grow flex items-center justify-center">
+<main layout:fragment="main" class="flex-grow flex items-center justify-center">
 
-    <div className="hidden" id="msg-loginFormNeedInputUsername" th:text="#{c.loginFormNeedInputUsername}"></div>
-    <div className="hidden" id="msg-loginFormNeedInputUsernameMoreThan"
+    <div class="hidden" id="msg-loginFormNeedInputUsername" th:text="#{c.loginFormNeedInputUsername}"></div>
+    <div class="hidden" id="msg-loginFormNeedInputUsernameMoreThan"
          th:text="${@rq.getCText('c.loginFormNeedInputUsernameMoreThan', loginFormInputUsernameValueMinLength)}"></div>
-    <div className="hidden" id="msg-loginFormNeedInputPassword" th:text="#{c.loginFormNeedInputPassword}"></div>
-    <div className="hidden" id="msg-loginFormNeedInputPasswordMoreThan"
+    <div class="hidden" id="msg-loginFormNeedInputPassword" th:text="#{c.loginFormNeedInputPassword}"></div>
+    <div class="hidden" id="msg-loginFormNeedInputPasswordMoreThan"
          th:text="#{c.loginFormNeedInputPasswordMoreThan(${loginFormInputPasswordValueMinLength})}"></div>
 
     <script>
@@ -57,67 +57,67 @@
         }
     </script>
 
-    <div className="max-w-2xl w-full px-4">
-        <h1 className="mb-4">
-            <i className="fa-solid fa-arrow-right-to-bracket"></i>
+    <div class="max-w-2xl w-full px-4">
+        <h1 class="mb-4">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>
             <span th:text="#{c.pageNameStart}"></span>
         </h1>
 
-        <form th:action method="POST" className="flex flex-col gap-6" onSubmit="LoginForm__submit(this); return false;">
+        <form th:action method="POST" class="flex flex-col gap-6" onsubmit="LoginForm__submit(this); return false;">
             <th:block th:if="${@rq.refererAdminPage or param.admin != null}">
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">
-                            <i className="fa-regular fa-id-badge"></i>
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text">
+                            <i class="fa-regular fa-id-badge"></i>
                             <span th:text="#{c.loginFormUsername}"></span>
                         </span>
                     </label>
                     <input type="text" name="username" th:placeholder="#{c.loginFormUsername}"
-                           className="input input-bordered" autoFocus/>
+                           class="input input-bordered" autofocus/>
                 </div>
 
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text">
-                            <i className="fa-solid fa-key"></i>
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text">
+                            <i class="fa-solid fa-key"></i>
                             <span th:text="#{c.loginFormPassword}"></span>
                         </span>
                     </label>
                     <input type="password" name="password" th:placeholder="#{c.loginFormPassword}"
-                           className="input input-bordered"/>
+                           class="input input-bordered"/>
                 </div>
 
-                <button id="btn-login-1" className="btn btn-block btn-primary gap-1">
-                    <i className="fa-solid fa-arrow-right-to-bracket"></i>
-                    <span className="normal-case" th:text="#{c.pageNameStart}"></span>
+                <button id="btn-login-1" class="btn btn-block btn-primary gap-1">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    <span class="normal-case" th:text="#{c.pageNameStart}"></span>
                 </button>
             </th:block>
 
-            <a href="/oauth2/authorization/kakao" className="btn btn-block btn-outline gap-1">
-                <i className="fa-solid fa-comment text-[color:#ffe812]"></i>
-                <span className="normal-case" th:text="#{c.startWithKakao}"></span>
+            <a href="/oauth2/authorization/kakao" class="btn btn-block btn-outline gap-1">
+                <i class="fa-solid fa-comment text-[color:#ffe812]"></i>
+                <span class="normal-case" th:text="#{c.startWithKakao}"></span>
             </a>
 
-            <a href="/oauth2/authorization/naver" className="btn btn-block btn-outline gap-1">
-                <i className="fa-solid fa-n text-[color:#2DB400]"></i>
-                <span className="normal-case" th:text="#{c.startWithNaver}"></span>
+            <a href="/oauth2/authorization/naver" class="btn btn-block btn-outline gap-1">
+                <i class="fa-solid fa-n text-[color:#2DB400]"></i>
+                <span class="normal-case" th:text="#{c.startWithNaver}"></span>
             </a>
 
-            <a href="/oauth2/authorization/google" className="btn btn-block btn-outline gap-1">
-                <i className="fa-brands fa-google text-[color:#ff4000]"></i>
-                <span className="normal-case" th:text="#{c.startWithGoogle}"></span>
+            <a href="/oauth2/authorization/google" class="btn btn-block btn-outline gap-1">
+                <i class="fa-brands fa-google text-[color:#ff4000]"></i>
+                <span class="normal-case" th:text="#{c.startWithGoogle}"></span>
             </a>
 
-            <a href="/oauth2/authorization/facebook" className="btn btn-block btn-outline gap-1">
-                <i className="fa-brands fa-facebook text-[color:#3b5998]"></i>
-                <span className="normal-case" th:text="#{c.startWithFacebook}"></span>
+            <a href="/oauth2/authorization/facebook" class="btn btn-block btn-outline gap-1">
+                <i class="fa-brands fa-facebook text-[color:#3b5998]"></i>
+                <span class="normal-case" th:text="#{c.startWithFacebook}"></span>
             </a>
 
-            <div className="flex flex-wrap justify-center">
-                <a href="/usr/home/about" className="btn btn-link">
+            <div class="flex flex-wrap justify-center">
+                <a href="/usr/home/about" class="btn btn-link">
                     <span>
-                        <i className="fa-solid fa-circle-info mr-1"></i>
-                        <span className="normal-case" th:text="#{c.whatIsThisService}"></span>&nbsp;
+                        <i class="fa-solid fa-circle-info mr-1"></i>
+                        <span class="normal-case" th:text="#{c.whatIsThisService}"></span>&nbsp;
                     </span>
                 </a>
             </div>

@@ -43,6 +43,7 @@
                     </li>
 
                     <div th:if="${@rq.login}" class="divider"></div>
+
                     <li th:if="${@rq.login}">
                         <a href="/usr/likeablePerson/like">
                             <th:block th:utext="#{c.iconGivingALike}"></th:block>
