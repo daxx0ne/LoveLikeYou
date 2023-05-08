@@ -44,7 +44,7 @@ public class NotificationServiceTests {
         List<Notification> notifications = notificationService.findByToInstaMember(memberUser5.getInstaMember());
 
         // 그중에 최신 알림 가져오기
-        Notification lastNotification = notifications.get(notifications.size() - 1);
+        Notification lastNotification = notifications.get(0);
 
         // 보낸이의 인스타 아이디가 insta_user3 인지 체크
         assertThat(lastNotification.getFromInstaMember().getUsername()).isEqualTo("insta_user3");
@@ -68,7 +68,7 @@ public class NotificationServiceTests {
         List<Notification> notifications = notificationService.findByToInstaMember(memberUser4.getInstaMember());
 
         // 그중에 최신 알림 가져오기
-        Notification lastNotification = notifications.get(notifications.size() - 1);
+        Notification lastNotification = notifications.get(0);
 
         // 보낸이의 인스타 아이디가 insta_user3 인지 체크
         assertThat(lastNotification.getFromInstaMember().getUsername()).isEqualTo("insta_user3");
