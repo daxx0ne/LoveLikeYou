@@ -5,3 +5,6 @@ server:
     key-store-type: PKCS12
     key-store-password: 123123
     key-store: keystore.p12
+spring:
+  thymeleaf:
+    cache: false

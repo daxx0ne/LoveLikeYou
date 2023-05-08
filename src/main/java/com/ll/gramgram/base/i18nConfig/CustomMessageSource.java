@@ -2,6 +2,7 @@ package com.ll.gramgram.base.i18nConfig;
 
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Component;
+import org.springframework.cache.annotation.Cacheable;
 
 import java.text.MessageFormat;
 import java.util.Locale;
@@ -26,8 +27,9 @@ public class CustomMessageSource extends ResourceBundleMessageSource {
         return replaceVariables(super.resolveCode(code, locale), locale);
     }
 
+    @Cacheable(cacheNames = "translation", key = "#code + ',' + #locale")
     public String replaceVariablesToString(String code, Locale locale) {
-        StringBuffer result = new StringBuffer();
+        StringBuilder result = new StringBuilder();
         Matcher matcher = VARIABLE_PATTERN.matcher(code);
 
         while (matcher.find()) {
