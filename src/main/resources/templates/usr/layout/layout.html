@@ -10,7 +10,7 @@
                     <i class="fa-solid fa-bars"></i>
                 </label>
                 <ul tabindex="0"
-                    class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                    class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-64">
                     <li th:if="${@rq.logout}"><a href="/usr/member/login"><i
                             class="fa-solid fa-arrow-right-to-bracket"></i> 시작하기</a>
                     </li>
@@ -37,7 +37,8 @@
                         </a>
                     </li>
                     <div th:if="${@rq.login}" class="divider"></div>
-                    <li><a href="/usr/home/about"><i class="fa-solid fa-circle-info"></i> 그램그램이란?</a>
+                    <li><a href="/usr/home/about"><i class="fa-solid fa-circle-info"></i> <span
+                            th:text="#{c.whatIsThisService}"></span></a>
                     </li>
                     <li th:if="${@rq.login}">
                         <a href="javascript:" onclick="$(this).next().submit();">
@@ -50,11 +51,7 @@
         </div>
         <div class="navbar-center">
             <a href="/" class="btn btn-ghost normal-case text-xl">
-                <span class="hidden min-[341px]:inline">
-                    gram
-                    <i class="fa-solid fa-heart text-red-300"></i>
-                    gram
-                </span>
+                <span class="hidden min-[341px]:inline" th:utext="#{c.logoTextWithEmojiEn}"></span>
                 <span class="min-[341px]:hidden">gg</span>
                 &nbsp;
             </a>
