@@ -15,33 +15,32 @@ spring:
     oauth2:
       client:
         registration:
+          naver:
+            scope:
+            client-name: Naver
+            authorization-grant-type: authorization_code
+            redirect-uri: '${custom.site.baseUrl}/{action}/oauth2/code/{registrationId}'
           kakao:
             scope:
             client-name: Kakao
             authorization-grant-type: authorization_code
-            redirect-uri: '{baseUrl}/{action}/oauth2/code/{registrationId}'
+            redirect-uri: '${custom.site.baseUrl}/{action}/oauth2/code/{registrationId}'
             client-authentication-method: POST
           google:
-            redirect-uri: '{baseUrl}/{action}/oauth2/code/{registrationId}'
-            client-name: Google
             scope: profile
-          naver:
-            authorization-grant-type: authorization_code
-            redirect-uri: '{baseUrl}/{action}/oauth2/code/{registrationId}'
-            client-name: Naver
-            scope:
+            client-name: Google
+            redirect-uri: '${custom.site.baseUrl}/{action}/oauth2/code/{registrationId}'
           facebook:
-            redirect-uri: '{baseUrl}/{action}/oauth2/code/{registrationId}'
-            client-name: Facebook
             scope:
+            client-name: Facebook
+            redirect-uri: '${custom.site.baseUrl}/{action}/oauth2/code/{registrationId}'
           instagram:
-            provider: instagram
             scope: user_profile,user_media
             client-name: Instagram
+            provider: instagram
             authorization-grant-type: authorization_code
-            redirect-uri: "{baseUrl}/{action}/oauth2/code/{registrationId}"
+            redirect-uri: '${custom.site.baseUrl}/{action}/oauth2/code/{registrationId}'
             client-authentication-method: client_secret_post
-
         provider:
           kakao:
             authorization-uri: https://kauth.kakao.com/oauth/authorize
@@ -69,7 +68,7 @@ spring:
 logging:
   level:
     root: INFO
-    com.ll.gramgram_ai: DEBUG
+    com.ll.gramgram: DEBUG
     org.hibernate.orm.jdbc.bind: TRACE
     org.hibernate.orm.jdbc.extract: TRACE
 custom:
