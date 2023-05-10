@@ -133,11 +133,13 @@ public class LikeablePersonController {
             Stream<LikeablePerson> likeablePeopleStream = instaMember.getToLikeablePeople().stream();
 
             if (gender != null) {
-                // likeablePeopleStream = likeablePeopleStream.filter();
+                // 필수 미션: 특정 성별을 가진 사람에게서 받은 호감만 필터링
+                likeablePeopleStream = likeablePeopleStream.filter(person -> person.getFromInstaMember().getGender().equals(gender));
             }
 
             if (attractiveTypeCode != 0) {
-                // likeablePeopleStream = likeablePeopleStream.filter();
+                // 선택 미션1: 특정 호감사유의 호감만 필터링
+                likeablePeopleStream = likeablePeopleStream.filter(person -> person.getAttractiveTypeCode() == attractiveTypeCode);
             }
 
             switch (sortCode) {
