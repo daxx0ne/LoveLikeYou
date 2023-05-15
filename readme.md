@@ -5,7 +5,21 @@
     - [x] 호감사유 필터링
       - [x] 원활한 테스트를 위해서 인스타 사용자 user4 가 다수의 호감표시를 받도록 NotProd 변경
       - [x] NotProd 변경에 따른 테스트케이스 수정
-    - [ ] 정렬
+    - [x] 정렬
+      - [x] 최신순
+        - 애초에 최신순으로 정렬되어 있었음
+        - 그래서 딱히 할게 없음
+      - [x] 날짜순
+        - id DESC
+      - [x] 인기많은순
+        - likeCount DESC, id DESC
+        - 이 작업을 위해 NotProd 에서 호감표시건을 더 만듬
+      - [x] 인기적은순
+        - likeCount ASC, id DESC
+      - [x] 성별순
+        - gender DESC, id DESC
+      - [x] 호감사유순
+        - gender ASC, id DESC
 - [x] 알림
     - [x] 호감표시할 때 알림생성
     - [x] 호감사유변경할 때 알림생성

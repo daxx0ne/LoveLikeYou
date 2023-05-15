@@ -20,7 +20,7 @@
                 당신을 좋아하는 사람들
             </h1>
 
-            <div class="card bg-base-100 shadow-xl">
+            <div class="card bg-base-100 shadow-xl" th:if="${!#lists.isEmpty(likeablePeople)}">
                 <div class="card-body">
                     <form class="flex flex-col gap-6">
                         <div class="form-control">
@@ -94,6 +94,24 @@
                 <li th:each="likeablePerson: ${likeablePeople}">
                     <div class="card bg-base-100 shadow-xl">
                         <div class="card-body">
+                            <div class="mt-4 mb-2 flex flex-col gap-2">
+                                <div>
+                                    <i class="fa-solid fa-heart"></i>
+                                    번호
+                                </div>
+                                <span class="badge badge-primary"
+                                      th:text="|${likeablePerson.id}번|"></span>
+                            </div>
+
+                            <div class="mt-4 mb-2 flex flex-col gap-2">
+                                <div>
+                                    <i class="fa-solid fa-chart-line"></i>
+                                    인기
+                                </div>
+                                <span class="badge badge-primary"
+                                      th:text="|${#numbers.formatInteger(likeablePerson.fromInstaMember.likes, 0, 'COMMA')}|"></span>
+                            </div>
+
                             <div class="mt-4 mb-2 flex flex-col gap-2">
                                 <div>
                                     <i class="fa-regular fa-face-laugh-beam"></i>

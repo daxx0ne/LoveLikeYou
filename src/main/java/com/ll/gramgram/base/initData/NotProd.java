@@ -31,7 +31,11 @@ public class NotProd {
     private String facebookDevUserOAuthId;
 
     @Bean
-    CommandLineRunner initData(MemberService memberService, InstaMemberService instaMemberService, LikeablePersonService likeablePersonService) {
+    CommandLineRunner initData(
+            MemberService memberService,
+            InstaMemberService instaMemberService,
+            LikeablePersonService likeablePersonService
+    ) {
         return new CommandLineRunner() {
             @Override
             @Transactional
@@ -63,15 +67,29 @@ public class NotProd {
                 LikeablePerson likeablePersonToInstaUser100 = likeablePersonService.like(memberUser3, "insta_user100", 2).getData();
                 Ut.reflection.setFieldValue(likeablePersonToInstaUser100, "modifyUnlockDate", LocalDateTime.now().minusSeconds(1));
 
-                LikeablePerson likeablePersonToInstaUserAbcd = likeablePersonService.like(memberUser3, "insta_user_abcd", 2).getData();
-                LikeablePerson likeablePersonToInstaUser5 = likeablePersonService.like(memberUser2, "insta_user5", 2).getData();
+                likeablePersonService.like(memberUser3, "insta_user_abcd", 2).getData();
+                likeablePersonService.like(memberUser2, "insta_user5", 2).getData();
 
-                LikeablePerson likeablePersonToInstaUser4_2 = likeablePersonService.like(memberUser2, "insta_user4", 2).getData();
-                LikeablePerson likeablePersonToInstaUser4_3 = likeablePersonService.like(memberUser5, "insta_user4", 3).getData();
-                LikeablePerson likeablePersonToInstaUser4_4 = likeablePersonService.like(memberUser6ByKakao, "insta_user4", 2).getData();
-                LikeablePerson likeablePersonToInstaUser4_5 = likeablePersonService.like(memberUser7ByGoogle, "insta_user4", 1).getData();
-                LikeablePerson likeablePersonToInstaUser4_6 = likeablePersonService.like(memberUser8ByNaver, "insta_user4", 2).getData();
-                LikeablePerson likeablePersonToInstaUser4_7 = likeablePersonService.like(memberUser9ByFacebook, "insta_user4", 3).getData();
+                likeablePersonService.like(memberUser2, "insta_user4", 2).getData();
+                likeablePersonService.like(memberUser5, "insta_user4", 3).getData();
+                likeablePersonService.like(memberUser6ByKakao, "insta_user4", 2).getData();
+                likeablePersonService.like(memberUser7ByGoogle, "insta_user4", 1).getData();
+                likeablePersonService.like(memberUser8ByNaver, "insta_user4", 2).getData();
+                likeablePersonService.like(memberUser9ByFacebook, "insta_user4", 3).getData();
+
+                likeablePersonService.like(memberUser2, "insta_user6", 2).getData();
+                likeablePersonService.like(memberUser3, "insta_user6", 3).getData();
+                likeablePersonService.like(memberUser6ByKakao, "insta_user6", 2).getData();
+                likeablePersonService.like(memberUser7ByGoogle, "insta_user6", 1).getData();
+
+                likeablePersonService.like(memberUser2, "insta_user7", 2).getData();
+                likeablePersonService.like(memberUser3, "insta_user7", 3).getData();
+                likeablePersonService.like(memberUser6ByKakao, "insta_user7", 2).getData();
+
+                likeablePersonService.like(memberUser2, "insta_user8", 2).getData();
+                likeablePersonService.like(memberUser3, "insta_user8", 3).getData();
+
+                likeablePersonService.like(memberUser2, "insta_user9", 2).getData();
             }
         };
     }
