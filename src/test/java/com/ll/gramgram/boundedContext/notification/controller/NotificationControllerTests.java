@@ -39,9 +39,9 @@ public class NotificationControllerTests {
 
     @Test
     @DisplayName("알림목록에 접속했을 때 아직 읽음처리되지 않은 것들을 읽음처리 한다.")
-    @WithUserDetails("user4")
+    @WithUserDetails("user5")
     void t001() throws Exception {
-        List<Notification> notifications = notificationService.findByToInstaMember_username("insta_user4");
+        List<Notification> notifications = notificationService.findByToInstaMember_username("insta_user5");
 
         long unreadCount = notifications
                 .stream()

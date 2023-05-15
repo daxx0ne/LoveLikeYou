@@ -31,11 +31,7 @@ public class NotProd {
     private String facebookDevUserOAuthId;
 
     @Bean
-    CommandLineRunner initData(
-            MemberService memberService,
-            InstaMemberService instaMemberService,
-            LikeablePersonService likeablePersonService
-    ) {
+    CommandLineRunner initData(MemberService memberService, InstaMemberService instaMemberService, LikeablePersonService likeablePersonService) {
         return new CommandLineRunner() {
             @Override
             @Transactional
@@ -57,13 +53,25 @@ public class NotProd {
                 instaMemberService.connect(memberUser4, "insta_user4", "M");
                 instaMemberService.connect(memberUser5, "insta_user5", "W");
 
-                // 원활한 테스트와 개발을 위해서 자동으로 만들어지는 호감이 삭제, 수정이 가능하도록 쿨타임해제
+                instaMemberService.connect(memberUser6ByKakao, "insta_user6", "M");
+                instaMemberService.connect(memberUser7ByGoogle, "insta_user7", "W");
+                instaMemberService.connect(memberUser8ByNaver, "insta_user8", "M");
+                instaMemberService.connect(memberUser9ByFacebook, "insta_user9", "W");
                 LikeablePerson likeablePersonToInstaUser4 = likeablePersonService.like(memberUser3, "insta_user4", 1).getData();
                 Ut.reflection.setFieldValue(likeablePersonToInstaUser4, "modifyUnlockDate", LocalDateTime.now().minusSeconds(1));
+
                 LikeablePerson likeablePersonToInstaUser100 = likeablePersonService.like(memberUser3, "insta_user100", 2).getData();
                 Ut.reflection.setFieldValue(likeablePersonToInstaUser100, "modifyUnlockDate", LocalDateTime.now().minusSeconds(1));
 
                 LikeablePerson likeablePersonToInstaUserAbcd = likeablePersonService.like(memberUser3, "insta_user_abcd", 2).getData();
+                LikeablePerson likeablePersonToInstaUser5 = likeablePersonService.like(memberUser2, "insta_user5", 2).getData();
+
+                LikeablePerson likeablePersonToInstaUser4_2 = likeablePersonService.like(memberUser2, "insta_user4", 2).getData();
+                LikeablePerson likeablePersonToInstaUser4_3 = likeablePersonService.like(memberUser5, "insta_user4", 3).getData();
+                LikeablePerson likeablePersonToInstaUser4_4 = likeablePersonService.like(memberUser6ByKakao, "insta_user4", 2).getData();
+                LikeablePerson likeablePersonToInstaUser4_5 = likeablePersonService.like(memberUser7ByGoogle, "insta_user4", 1).getData();
+                LikeablePerson likeablePersonToInstaUser4_6 = likeablePersonService.like(memberUser8ByNaver, "insta_user4", 2).getData();
+                LikeablePerson likeablePersonToInstaUser4_7 = likeablePersonService.like(memberUser9ByFacebook, "insta_user4", 3).getData();
             }
         };
     }
