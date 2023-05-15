@@ -10,9 +10,9 @@ import com.ll.gramgram.boundedContext.instaMember.service.InstaMemberService;
 import com.ll.gramgram.boundedContext.likeablePerson.entity.LikeablePerson;
 import com.ll.gramgram.boundedContext.likeablePerson.repository.LikeablePersonRepository;
 import com.ll.gramgram.boundedContext.member.entity.Member;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -223,11 +223,11 @@ public class LikeablePersonService {
         return RsData.of("S-1", "호감사유변경이 가능합니다.");
     }
 
-    public List<LikeablePerson> findByToInstaMemberAndGenderAndAttractiveTypeCode(String username, String gender, int attractiveTypeCode, int sortCode) {
-        return findByToInstaMemberAndGenderAndAttractiveTypeCode(instaMemberService.findByUsername(username).get(), gender, attractiveTypeCode, sortCode);
+    public List<LikeablePerson> findByToInstaMember(String username, @Nullable String gender, int attractiveTypeCode, int sortCode) {
+        return findByToInstaMember(instaMemberService.findByUsername(username).get(), gender, attractiveTypeCode, sortCode);
     }
 
-    public List<LikeablePerson> findByToInstaMemberAndGenderAndAttractiveTypeCode(InstaMember instaMember, String gender, int attractiveTypeCode, int sortCode) {
-        return likeablePersonRepository.findQslByToInstaMemberAndGenderAndAttractiveTypeCode(instaMember, gender, attractiveTypeCode, sortCode);
+    public List<LikeablePerson> findByToInstaMember(InstaMember instaMember, @Nullable String gender, int attractiveTypeCode, int sortCode) {
+        return likeablePersonRepository.findQslByToInstaMember(instaMember, gender, attractiveTypeCode, sortCode);
     }
 }

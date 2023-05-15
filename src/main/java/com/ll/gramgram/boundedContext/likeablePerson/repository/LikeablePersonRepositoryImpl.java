@@ -38,7 +38,7 @@ public class LikeablePersonRepositoryImpl implements LikeablePersonRepositoryCus
     }
 
     @Override
-    public List<LikeablePerson> findQslByToInstaMemberAndGenderAndAttractiveTypeCode(InstaMember instaMember, String gender, int attractiveTypeCode, int sortCode) {
+    public List<LikeablePerson> findQslByToInstaMember(InstaMember instaMember, String gender, int attractiveTypeCode, int sortCode) {
 
         Sort sort = switch (sortCode) {
             case 2 -> Sort.by("id").ascending();

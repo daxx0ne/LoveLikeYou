@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface LikeablePersonRepositoryCustom {
     Optional<LikeablePerson> findQslByFromInstaMemberIdAndToInstaMember_username(long fromInstaMemberId, String toInstaMemberUsername);
 
-    List<LikeablePerson> findQslByToInstaMemberAndGenderAndAttractiveTypeCode(InstaMember instaMember, String gender, int attractiveTypeCode, int sortCode);
+    List<LikeablePerson> findQslByToInstaMember(InstaMember instaMember, String gender, int attractiveTypeCode, int sortCode);
 }
