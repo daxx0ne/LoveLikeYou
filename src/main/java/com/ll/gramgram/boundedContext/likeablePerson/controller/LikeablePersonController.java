@@ -138,8 +138,8 @@ public class LikeablePersonController {
             }
 
             if (attractiveTypeCode != 0) {
-                // 선택 미션1: 특정 호감사유의 호감만 필터링
-                likeablePeopleStream = likeablePeopleStream.filter(person -> person.getAttractiveTypeCode() == attractiveTypeCode);
+                likeablePeopleStream = likeablePeopleStream
+                        .filter(likeablePerson -> likeablePerson.getAttractiveTypeCode() == attractiveTypeCode);
             }
 
             switch (sortCode) {
