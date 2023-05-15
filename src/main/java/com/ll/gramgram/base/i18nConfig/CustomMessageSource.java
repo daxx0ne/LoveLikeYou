@@ -46,7 +46,6 @@ public class CustomMessageSource extends ResourceBundleMessageSource {
 
     @Cacheable(cacheNames = "translation", key = "#code + ',' + #locale")
     public String _replaceVariablesToString(String code, Locale locale) {
-        System.out.println("code : " + code + ", locale : " + locale);
         StringBuilder result = new StringBuilder();
         Matcher matcher = VARIABLE_PATTERN.matcher(code);
 
