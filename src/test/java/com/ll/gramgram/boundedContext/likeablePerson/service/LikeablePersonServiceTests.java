@@ -289,7 +289,7 @@ public class LikeablePersonServiceTests {
     @DisplayName("정렬 - 인기 많은 순")
     @Rollback(false)
     void t011() {
-        List<LikeablePerson> likeablePeople = likeablePersonService.findByToInstaMember("insta_user4", "", 0, 5);
+        List<LikeablePerson> likeablePeople = likeablePersonService.findByToInstaMember("insta_user4", "", 0, 3);
 
         assertThat(likeablePeople)
                 .isSortedAccordingTo(
