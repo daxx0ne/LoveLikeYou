@@ -14,10 +14,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Comparator;
 import java.time.LocalDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -261,5 +263,76 @@ public class LikeablePersonServiceTests {
         assertThat(
                 likeablePersonToBts.getModifyUnlockDate().isAfter(coolTime)
         ).isTrue();
+    }
+
+    @Test
+    @DisplayName("정렬 - 최신순")
+    void t009() {
+        List<LikeablePerson> likeablePeople = likeablePersonService.findByToInstaMember("insta_user4", "", 0, 1);
+
+        assertThat(likeablePeople)
+                .isSortedAccordingTo(Comparator.comparing(LikeablePerson::getId, Comparator.reverseOrder()));
+    }
+
+    @Test
+    @DisplayName("정렬 - 날짜순")
+    @Rollback(false)
+    void t010() {
+        List<LikeablePerson> likeablePeople = likeablePersonService.findByToInstaMember("insta_user4", "", 0, 2);
+
+        assertThat(likeablePeople)
+                .isSortedAccordingTo(Comparator.comparing(LikeablePerson::getId));
+    }
+
+    @Test
+    @DisplayName("정렬 - 인기 많은 순")
+    @Rollback(false)
+    void t011() {
+        List<LikeablePerson> likeablePeople = likeablePersonService.findByToInstaMember("insta_user4", "", 0, 3);
+
+        assertThat(likeablePeople)
+                .isSortedAccordingTo(
+                        Comparator.comparing((LikeablePerson lp) -> lp.getFromInstaMember().getLikes()).reversed()
+                                .thenComparing(Comparator.comparing(LikeablePerson::getId).reversed())
+                );
+    }
+
+    @Test
+    @DisplayName("정렬 - 인기 적은 순")
+    @Rollback(false)
+    void t012() {
+        List<LikeablePerson> likeablePeople = likeablePersonService.findByToInstaMember("insta_user4", "", 0, 4);
+
+        assertThat(likeablePeople)
+                .isSortedAccordingTo(
+                        Comparator.comparing((LikeablePerson lp) -> lp.getFromInstaMember().getLikes())
+                                .thenComparing(Comparator.comparing(LikeablePerson::getId).reversed())
+                );
+    }
+
+    @Test
+    @DisplayName("정렬 - 성별순")
+    @Rollback(false)
+    void t013() {
+        List<LikeablePerson> likeablePeople = likeablePersonService.findByToInstaMember("insta_user4", "", 0, 5);
+
+        assertThat(likeablePeople)
+                .isSortedAccordingTo(
+                        Comparator.comparing((LikeablePerson lp) -> lp.getFromInstaMember().getGender()).reversed()
+                                .thenComparing(Comparator.comparing(LikeablePerson::getId).reversed())
+                );
+    }
+
+    @Test
+    @DisplayName("정렬 - 호감사유순")
+    @Rollback(false)
+    void t014() {
+        List<LikeablePerson> likeablePeople = likeablePersonService.findByToInstaMember("insta_user4", "", 0, 6);
+
+        assertThat(likeablePeople)
+                .isSortedAccordingTo(
+                        Comparator.comparing(LikeablePerson::getAttractiveTypeCode)
+                                .thenComparing(Comparator.comparing(LikeablePerson::getId).reversed())
+                );
     }
 }
